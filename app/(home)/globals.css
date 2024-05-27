@@ -1,0 +1,540 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+.container {
+  background: red;
+}
+
+.p {
+  color: green;
+}
+
+.top-airing {
+  display: flex;
+  justify-content: center;
+  height: 75vh;
+  width: 100%;
+  position: relative; /* Add this to ensure the shadow overlay covers the carousel */
+}
+
+.shadow {
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  box-shadow: 400px 0px 150px 100px #040404 inset;
+}
+
+.ani-div-top {
+  position: relative;
+  width: 100%;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+
+.ani-div-top-textbox{
+  position: absolute;
+ margin-top: 32%;
+  padding: 20px;
+ 
+  align-items: flex-start;
+  display: flex;
+  /* right: 0; */
+  /* left: 0; */
+  flex-direction: column;
+ 
+  
+  z-index: 2; /* Make sure text is above the shadow */
+}
+.bottom-left {
+  transform: translate(0%, -100%);
+}
+.ani-div-top-textbox h4 {
+  font-size: 2vw; /* Adjust font size using viewport width */
+}
+.ani-div-top-textbox .text-white {
+  font-size: 1.5vw; /* Adjust font size using viewport width */
+}
+
+.ani-div-top-textbox .genre {
+  font-size: 1.2vw; /* Adjust font size using viewport width */
+}
+
+.ani-div-top-textbox button {
+  font-size: 1.5vw; /* Adjust font size using viewport width */
+  padding: 1vw 2vw; /* Adjust padding using viewport width */
+}
+
+
+.carousel-item {
+  display: none; /* Hide carousel items by default */
+}
+
+/* Display only one item at a time */
+.carousel-item.active {
+  display: block;
+}
+
+
+/* Media query for responsiveness */
+@media screen and (max-width: 768px) {
+  .top-airing {
+    height: 20vh; /* Adjust height for smaller screens */
+  }
+  .ani-div-top-textbox h4 {
+    font-size: 3vw; /* Adjust font size using viewport width */
+  }
+
+  .ani-div-top-textbox .text-white {
+    font-size: 2vw; /* Adjust font size using viewport width */
+  }
+
+  .ani-div-top-textbox .genre {
+    font-size: 1.5vw; /* Adjust font size using viewport width */
+  }
+
+  .ani-div-top-textbox button {
+    font-size: 2vw; /* Adjust font size using viewport width */
+    padding: 1.5vw 3vw; /* Adjust padding using viewport width */
+  }
+  .ani-div-top-textbox{
+    position: absolute;
+   margin-top: 50%;
+    padding: 20px;
+    
+    align-items: flex-start;
+    display: flex;
+    /* right: 0; */
+    /* left: 0; */
+    flex-direction: column;
+   
+    
+    z-index: 2; /* Make sure text is above the shadow */
+  }
+  .bottom-left {
+    transform: translate(0%, -100%);
+  }
+  .shadow{
+    opacity: 0.6;
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    box-shadow: 400px 0px 150px 100px #040404 inset;
+  }
+}
+
+.blur {
+  filter: blur(2px); /* Adjust the blur strength as needed */
+}
+
+.opacity-75 {
+  opacity: 0.75; /* Adjust the opacity level as needed (0.0 to 1.0) */
+}
+
+
+.top-air-div {
+  justify-content: center;
+  display: flex;
+ 
+}
+.top-airing-text {
+  width: 60%;
+}
+.top-airing-text h4 {
+  float: left;
+  font-size: 1rem;
+}
+.click-section-home {
+  display: flex;
+}
+.click-section-home button {
+  padding: 0 3%;
+
+  border: none;
+  cursor: pointer;
+  outline: none;
+  transition: background-color 0.3s ease;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  height: 48px;
+  border-radius: 10px;
+  margin: 10px;
+}
+.active {
+  background-color: violet;
+  color: black;
+}
+
+.click-section-home button h2 {
+  font-size: 1.6rem;
+}
+
+
+
+.popular-card {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr)); /* Five anime in a row */
+  gap: 10px; /* Adjust the gap between anime cards */
+}
+.history-card{
+  width: 100%;
+  
+}
+.anime-history-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.continue-watching-heading{
+  width: 100%;
+  display: flex;
+  padding: 10px 0;
+}
+
+.continue-watching-heading h2{
+  font-size: 1.6rem;
+}
+
+
+
+/* Additional styling for the AnimeCard component may be required */
+
+.top-heading {
+}
+
+.anime-card {
+  border-radius: unset;
+  position: relative;
+  overflow: hidden;
+  height: 378px;
+  width: 270px;
+}
+
+.anime-card-image {
+  background-size: cover;
+  background-position: center;
+  display: block;
+  width: 100%;
+  height: 350px; /* Fixed height */
+  object-fit: cover; /* Maintain aspect ratio and fill the container */
+  transition: transform 0.3s ease;
+  overflow: hidden; /* Hide any overflow */
+}
+
+.anime-card-body {
+  padding: 0;
+}
+
+.anime-card-footer {
+  width: 100%;
+  padding: 10px;
+  color: white;
+  z-index: 2;
+  transition: color 0.3s ease;
+}
+
+.other-section {
+  display: flex;
+  flex-direction: row;
+}
+.recent-page {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.recent-link {
+  display: flex;
+  flex-direction: row;
+}
+
+.recent-card {
+  flex-direction: row;
+  justify-content: space-around;
+  display: flex;
+  width: 40vw;
+  margin: 1% 0;
+  height: 8vh;
+}
+.recent-card-body {
+  border-radius: 10px;
+  padding: 0 10px;
+  background: rgb(28, 27, 27);
+  justify-content: space-between;
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+.recent-card-main {
+  width: 100%;
+  justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 10px;
+}
+.recent-card-main-img {
+  padding: 10px;
+  align-items: center;
+}
+.recent-card-main-text {
+  width: 100%;
+}
+.recent-card-body-img {
+  border-radius: 10px;
+  height: 7vh;
+  width: 4vw;
+  background-size: contain; /* Ensure entire image is visible */
+  background-position: center;
+  display: block;
+  object-fit: contain; /* Maintain aspect ratio and fit entire image within container */
+  transition: transform 0.3s ease;
+}
+.numbering{
+  font-size: 1.6rem;
+  margin: 5px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  color: rgb(67, 85, 52);
+}
+
+
+/* Genres Section */
+
+.genre {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  margin-right: 0.5rem;
+  border-radius: 0.25rem;
+  background-color: yellow;
+}
+/* Define media query for smaller screens */
+@media (max-width: 767px) {
+  .popular-card {
+    grid-template-columns: repeat(2, minmax(0, 1fr)); /* Two cards in a row */
+  }
+
+  .popular-card .anime-card {
+    height: 250px; /* Decrease card height */
+    width: 100%; /* Adjust card width */
+  }
+
+  .recent-page {
+    width: 100%; /* Full width for smaller screens */
+  }
+
+  .recent-card {
+    width: 90vw; /* Full width for smaller screens */
+  }
+
+  .recent-card .recent-card-body-img {
+    height: 100px; /* Decrease image height */
+    width: 100%; /* Adjust image width */
+  }
+  .click-section-home button {
+    font-size: 0.8rem; /* Decrease button text size */
+    height: 40px; /* Decrease button height */
+    padding: 0 10px; /* Adjust button padding */
+  }
+  
+
+  .click-section-home h2 {
+    font-size: 1rem; /* Decrease heading text size */
+  }
+  .anime-history-container{
+    
+  }
+  .anime-card {
+    border-radius: unset;
+    position: relative;
+    overflow: hidden;
+    height: 160px;
+    width: 40vw;
+  }
+  .continue-watching-heading h2{
+    font-size: 1rem;
+  }
+}
+@media (max-width: 767px) {
+  .anime-history-scroll-container {
+    overflow-x: auto; /* Enable horizontal scrolling */
+    white-space: nowrap; /* Prevent wrapping of children */
+    -webkit-overflow-scrolling: touch; /* Enable smooth scrolling on iOS */
+    margin-bottom: 20px; /* Add some space at the bottom */
+  }
+  
+  .anime-history-container {
+    display: inline-block; /* Ensure container shrinks to fit content */
+  }
+  
+  .anime-history-item {
+    display: inline-block; /* Display items in a row */
+    margin-right: 10px; /* Add spacing between items */
+    vertical-align: top; /* Align items at the top */
+  }
+}
+
+
+/* Orange */
+
+.genre-comic { background-color: #ff5733; }
+.genre-action { background-color: #ff5733; }
+.genre-game { background-color: #ff5733; }
+.genre-iyashikei { background-color: #ff5733; }
+.genre-kids { background-color: #ff5733; }
+.genre-police { background-color: #ff5733; }
+.genre-psychological { background-color: #ff5733; }
+.genre-reincarnation { background-color: #ff5733; }
+.genre-space { background-color: #ff5733; }
+.genre-yaoi { background-color: #ff5733; }
+
+
+
+/* Yellow  */
+.genre-cgdct { background-color: rgb(225, 191, 3); }
+.genre-comedy { background-color: rgb(225, 191, 3); }
+.genre-detective { background-color: rgb(225, 191, 3); }
+.genre-drama { background-color: rgb(225, 191, 3); }
+.genre-harem { background-color: rgb(225, 191, 3); }
+.genre-hentai { background-color: rgb(225, 191, 3); }
+.genre-historical { background-color: rgb(225, 191, 3); }
+.genre-mecha { background-color: rgb(225, 191, 3); }
+.genre-mystery { background-color: rgb(225, 191, 3); }
+.genre-shoujo { background-color: rgb(225, 191, 3); }
+.genre-shounen { background-color: rgb(225, 191, 3); }
+.genre-servival { background-color: rgb(225, 191, 3); }
+
+
+/* Violet */
+.genre-adventure { background-color: violet; }
+.genre-anthropomorphic { background-color: violet; }
+.genre-cars { background-color: violet; }
+.genre-crime { background-color: violet; }
+.genre-dementia { background-color: violet; }
+.genre-family { background-color: violet; }
+.genre-gore { background-color: violet; }
+.genre-gourmet { background-color: violet; }
+.genre-horror { background-color: violet; }
+.genre-isekai { background-color: violet; }
+.genre-josei { background-color: violet; }
+.genre-isekai { background-color: violet; }
+.genre-magic { background-color: violet; }
+.genre-music { background-color: violet; }
+
+/* Blue */
+.genre-crossdressing { background-color: rgb(0, 21, 255); }
+.genre-delinquents { background-color: rgb(0, 21, 255); }
+.genre-dub { background-color: rgb(0, 21, 255); }
+.genre-ecchi { background-color: rgb(0, 21, 255); }
+.genre-erotica { background-color: rgb(0, 21, 255); }
+.genre-fantasy { background-color: rgb(0, 21, 255); }
+.genre-military { background-color: rgb(0, 21, 255); }
+.genre-parody { background-color: rgb(0, 21, 255); }
+.genre-pets { background-color: rgb(0, 21, 255); }
+.genre-racing { background-color: rgb(0, 21, 255); }
+.genre-romance { background-color: rgb(0, 21, 255); }
+.genre-samurai { background-color: rgb(0, 21, 255); }
+.genre-seinen { background-color: rgb(0, 21, 255); }
+.genre-supernatural { background-color: rgb(0, 21, 255); }
+.genre-vampire { background-color: rgb(0, 21, 255); }
+.genre-workplace { background-color: rgb(0, 21, 255); }
+.genre-yuri { background-color: rgb(0, 21, 255); }
+
+
+/* green */
+.genre-childcare { background-color: rgb(2, 193, 2); }
+.genre-medical { background-color: rgb(2, 193, 2); }
+.genre-mythology { background-color: rgb(2, 193, 2); }
+.genre-school { background-color: rgb(2, 193, 2); }
+.genre-showbiz { background-color: rgb(2, 193, 2); }
+.genre-sports { background-color: rgb(2, 193, 2); }
+.genre-suspense { background-color: rgb(2, 193, 2); }
+.genre-thriller { background-color: rgb(2, 193, 2); }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Add more genre styles as needed */
