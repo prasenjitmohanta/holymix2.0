@@ -14,11 +14,11 @@ Enjoy your favorite shows with English subs or dubs, and no sign-up required!
 ### 1. Clone this repository using
 
 ```bash
-git clone https://github.com/InfiniteDevs/animunet.git
+git clone https://github.com/prasenjitmohanta/holymix2.0
 ```
 
 ```bash
-cd animunet
+cd holymix2.0
 ```
 
 ### 2. Installation
